@@ -1,0 +1,14 @@
+🌐 Alternância de Ambiente - KATA Frontend
+
+LOCAL (padrão):
+NEXT_PUBLIC_ENV=local
+
+LIVE:
+NEXT_PUBLIC_ENV=live
+
+Comando para testar:
+NEXT_PUBLIC_ENV=live npm run dev
+
+URLs:
+- Local: http://localhost:3000
+- Live: https://desafio-tecnico-kata.onrender.com

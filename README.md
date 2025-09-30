@@ -1,36 +1,109 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# KATA E-commerce Frontend
 
-## Getting Started
+Dashboard para gerenciamento de produtos e carrinho de compras, construído com Next.js e integrado à API KATA E-commerce.
 
-First, run the development server:
+## Tecnologias
+
+- **Next.js 15** - Framework React com App Router
+- **TypeScript** - Tipagem estática
+- **Tailwind CSS v4** - Estilização utilitária
+- **shadcn/ui** - Componentes de interface elegantes
+- **Zod** - Validação de schemas e dados
+- **Lucide React** - Ícones modernos
+
+## Funcionalidades
+
+### Dashboard de Produtos
+
+- ✅ Listar todos os produtos disponíveis
+- ✅ Criar novos produtos com validação
+- ✅ Visualizar detalhes (ID, nome, preço, categoria)
+- ✅ Adicionar produtos ao carrinho
+
+### Carrinho de Compras
+
+- ✅ Visualizar itens no carrinho
+- ✅ Remover itens do carrinho
+- ✅ Aplicar cupons de desconto
+- ✅ Resumo completo (subtotal, desconto, frete, total)
+
+## Instalação e Execução
+
+1. **Instalar dependências:**
+
+```bash
+cd kata-frontend
+npm install
+```
+
+2. **Configurar variáveis de ambiente:**
+
+```bash
+# O projeto está configurado para usar http://localhost:3000 por padrão
+# Para alterar, configure NEXT_PUBLIC_API_URL no next.config.js
+```
+
+3. **Executar em desenvolvimento:**
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. **Acessar a aplicação:**
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+http://localhost:3001
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Estrutura de Pastas
 
-## Learn More
+```
+src/
+├── app/
+│   ├── globals.css          # Estilos globais com Tailwind CSS
+│   ├── layout.tsx           # Layout principal
+│   └── page.tsx             # Dashboard principal
+├── components/ui/           # Componentes shadcn/ui
+│   ├── button.tsx
+│   ├── card.tsx
+│   ├── input.tsx
+│   ├── label.tsx
+│   ├── table.tsx
+│   └── badge.tsx
+└── lib/
+    ├── schemas.ts           # Schemas Zod para validação
+    ├── services.ts          # Serviços de API com validação
+    └── utils.ts             # Utilitários
+```
 
-To learn more about Next.js, take a look at the following resources:
+### Validação com Zod
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Todos os dados são validados usando schemas Zod:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **ProductSchema** - Validação de produtos
+- **CreateProductSchema** - Validação para criação de produtos
+- **CartItemSchema** - Validação de itens do carrinho
+- **AddToCartSchema** - Validação para adicionar ao carrinho
+- **ApplyCouponSchema** - Validação de cupons
+- **CartSummarySchema** - Validação do resumo do carrinho
 
-## Deploy on Vercel
+## Integração com Backend
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+A aplicação se conecta com a API KATA E-commerce através dos endpoints:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `GET /api/produtos` - Listar produtos
+- `POST /api/produtos` - Criar produto
+- `GET /api/carrinho` - Listar carrinho
+- `POST /api/carrinho` - Adicionar ao carrinho
+- `DELETE /api/carrinho/:id` - Remover do carrinho
+- `POST /api/carrinho/cupom` - Aplicar cupom
+- `GET /api/carrinho/resumo` - Resumo do carrinho
+
+## Scripts Disponíveis
+
+```bash
+npm run dev          # Executar em desenvolvimento
+npm run build        # Build para produção
+npm run start        # Executar build de produção
+npm run lint         # Executar ESLint
+```

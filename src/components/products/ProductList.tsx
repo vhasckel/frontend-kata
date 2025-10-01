@@ -47,7 +47,9 @@ export function ProductList({ products, onAddToCart }: ProductListProps) {
             {products.map((product) => (
               <TableRow key={product.id}>
                 <TableCell>{product.id}</TableCell>
-                <TableCell className="font-medium">{product.nome}</TableCell>
+                <TableCell className="font-medium w-full">
+                  {product.nome}
+                </TableCell>
                 <TableCell>R$ {product.preco.toFixed(2)}</TableCell>
                 <TableCell>
                   {product.categoria && (

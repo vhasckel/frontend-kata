@@ -53,9 +53,11 @@ export function CartItems({
             <TableBody>
               {items.map((item) => (
                 <TableRow key={item.id}>
-                  <TableCell className="font-medium">{item.nome}</TableCell>
-                  <TableCell>
-                    <div className="flex items-center gap-2">
+                  <TableCell className="font-medium w-full">
+                    {item.nome}
+                  </TableCell>
+                  <TableCell className="text-center">
+                    <div className="flex items-center gap-2 justify-center">
                       <Button
                         size="sm"
                         variant="outline"

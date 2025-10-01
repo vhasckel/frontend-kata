@@ -29,6 +29,8 @@ export default function Dashboard() {
     addToCart,
     removeFromCart,
     applyCoupon,
+    incrementQuantity,
+    decrementQuantity,
   } = useCart();
 
   const loading = productsLoading || cartLoading;
@@ -89,7 +91,12 @@ export default function Dashboard() {
 
         {activeTab === "cart" && (
           <div className="space-y-6">
-            <CartItems items={cartItems} onRemove={removeFromCart} />
+            <CartItems
+              items={cartItems}
+              onRemove={removeFromCart}
+              onIncrement={incrementQuantity}
+              onDecrement={decrementQuantity}
+            />
             {cartItems.length > 0 && (
               <>
                 <CouponForm onApply={applyCoupon} />

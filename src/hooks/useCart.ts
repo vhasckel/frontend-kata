@@ -70,6 +70,51 @@ export function useCart() {
     [loadCart]
   );
 
+  const incrementQuantity = useCallback(
+    async (productId: number) => {
+      try {
+        await cartService.addToCart({
+          produto: { id: productId },
+          quantidade: 1,
+        });
+        await loadCart(false);
+        toast.success("Quantidade aumentada!");
+      } catch (error) {
+        console.error("Error incrementing quantity:", error);
+        toast.error("Erro ao aumentar quantidade");
+      }
+    },
+    [loadCart]
+  );
+
+  const decrementQuantity = useCallback(
+    async (productId: number) => {
+      try {
+        const item = cartItems.find((item) => item.id === productId);
+        if (!item) return;
+
+        if (item.quantidade === 1) {
+          // Se a quantidade é 1, remove o item completamente
+          await removeFromCart(productId);
+        } else {
+          // Como não há endpoint de update, precisamos remover e adicionar de volta com quantidade -1
+          await cartService.removeFromCart(productId);
+          await cartService.addToCart({
+            produto: { id: productId },
+            quantidade: item.quantidade - 1,
+          });
+          await loadCart(false);
+          toast.success("Quantidade reduzida!");
+        }
+      } catch (error) {
+        console.error("Error decrementing quantity:", error);
+        toast.error("Erro ao reduzir quantidade");
+        await loadCart(false);
+      }
+    },
+    [cartItems, loadCart, removeFromCart]
+  );
+
   return {
     cartItems,
     cartSummary,
@@ -78,5 +123,7 @@ export function useCart() {
     addToCart,
     removeFromCart,
     applyCoupon,
+    incrementQuantity,
+    decrementQuantity,
   };
 }

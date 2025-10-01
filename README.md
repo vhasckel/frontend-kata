@@ -59,21 +59,19 @@ http://localhost:3001
 
 ```
 src/
-├── app/
-│   ├── globals.css          # Estilos globais com Tailwind CSS
-│   ├── layout.tsx           # Layout principal
-│   └── page.tsx             # Dashboard principal
-├── components/ui/           # Componentes shadcn/ui
-│   ├── button.tsx
-│   ├── card.tsx
-│   ├── input.tsx
-│   ├── label.tsx
-│   ├── table.tsx
-│   └── badge.tsx
-└── lib/
-    ├── schemas.ts           # Schemas Zod para validação
-    ├── services.ts          # Serviços de API com validação
-    └── utils.ts             # Utilitários
+├── hooks/
+│   ├── useProducts.ts
+│   └── useCart.ts
+├── components/
+│   ├── products/
+│   │   ├── ProductForm.tsx
+│   │   └── ProductList.tsx
+│   └── cart/
+│       ├── CartItems.tsx
+│       ├── CouponForm.tsx
+│       └── CartSummary.tsx
+└── app/
+    └── page.tsx
 ```
 
 ### Validação com Zod

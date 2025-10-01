@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Plus, ShoppingCart } from "lucide-react";
-import { EnvironmentToggle } from "@/components/ui/environment-toggle";
 import { ProductForm } from "@/components/products/ProductForm";
 import { ProductList } from "@/components/products/ProductList";
 import { CouponForm } from "@/components/cart/CouponForm";
@@ -55,7 +54,6 @@ export default function Dashboard() {
             <h1 className="text-3xl font-bold text-gray-900">
               KATA E-commerce
             </h1>
-            <EnvironmentToggle />
           </div>
           <p className="text-gray-600">
             Dashboard de gerenciamento de produtos e carrinho

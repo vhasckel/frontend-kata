@@ -105,3 +105,15 @@ npm run build        # Build para produção
 npm run start        # Executar build de produção
 npm run lint         # Executar ESLint
 ```
+
+## Cupons de Desconto Disponíveis
+
+Use os códigos abaixo no campo de cupom do carrinho:
+
+- **WELCOME10**: 10% de desconto, sem valor mínimo
+- **SAVE100**: R$ 100,00 de desconto, pedido mínimo de R$ 500,00
+- **BIGORDER**: 15% de desconto, pedido mínimo de R$ 1.000,00
+
+Observações:
+- Percentuais aplicam-se sobre o subtotal; valores fixos são em reais
+- Alguns cupons podem ter limites de desconto definidos no backend

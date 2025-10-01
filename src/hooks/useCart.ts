@@ -1,6 +1,7 @@
 import { useState, useCallback } from "react";
 import { cartService } from "@/lib/services";
 import { CartItem, CartSummary } from "@/lib/schemas";
+import { toast } from "sonner";
 
 export function useCart() {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
@@ -31,8 +32,10 @@ export function useCart() {
           quantidade: 1,
         });
         await loadCart(false);
+        toast.success("Produto adicionado ao carrinho!");
       } catch (error) {
         console.error("Error adding to cart:", error);
+        toast.error("Erro ao adicionar produto ao carrinho");
       }
     },
     [loadCart]
@@ -43,8 +46,10 @@ export function useCart() {
       try {
         await cartService.removeFromCart(productId);
         await loadCart(false);
+        toast.success("Produto removido do carrinho!");
       } catch (error) {
         console.error("Error removing from cart:", error);
+        toast.error("Erro ao remover produto do carrinho");
       }
     },
     [loadCart]
@@ -55,8 +60,10 @@ export function useCart() {
       try {
         await cartService.applyCoupon({ codigoCupom: couponCode });
         await loadCart(false);
+        toast.success(`Cupom "${couponCode}" aplicado com sucesso!`);
       } catch (error) {
         console.error("Error applying coupon:", error);
+        toast.error("Erro ao aplicar cupom");
         throw error;
       }
     },

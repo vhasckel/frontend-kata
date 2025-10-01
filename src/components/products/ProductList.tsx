@@ -15,7 +15,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { ShoppingCart } from "lucide-react";
+import { Plus } from "lucide-react";
 import { Product } from "@/lib/schemas";
 
 interface ProductListProps {
@@ -56,8 +56,8 @@ export function ProductList({ products, onAddToCart }: ProductListProps) {
                 </TableCell>
                 <TableCell>
                   <Button size="sm" onClick={() => onAddToCart(product.id)}>
-                    <ShoppingCart className="w-4 h-4 mr-2" />
-                    Adicionar
+                    <Plus className="w-4 h-4 mr-2" />
+                    Adicionar ao Carrinho
                   </Button>
                 </TableCell>
               </TableRow>

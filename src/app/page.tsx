@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Plus, ShoppingCart } from "lucide-react";
+import { Store, ShoppingCart } from "lucide-react";
 import { ProductForm } from "@/components/products/ProductForm";
 import { ProductList } from "@/components/products/ProductList";
 import { CouponForm } from "@/components/cart/CouponForm";
@@ -65,8 +65,8 @@ export default function Dashboard() {
             variant={activeTab === "products" ? "default" : "outline"}
             onClick={() => setActiveTab("products")}
           >
-            <Plus className="w-4 h-4 mr-2" />
-            Produtos
+            <Store className="w-4 h-4 mr-2" />
+            Catálogo
           </Button>
           <Button
             variant={activeTab === "cart" ? "default" : "outline"}

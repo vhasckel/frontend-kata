@@ -2,6 +2,7 @@ import { CreateProduct, Product } from "@/lib/schemas";
 import { productService } from "@/lib/services";
 import { toTitleCase } from "@/lib/utils";
 import { useCallback, useState } from "react";
+import { toast } from "sonner";
 
 export function useProducts() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -28,9 +29,11 @@ export function useProducts() {
         };
         const newProduct = await productService.createProduct(formattedData);
         setProducts((prev) => [...prev, newProduct]);
+        toast.success(`Produto "${newProduct.nome}" criado com sucesso!`);
         return newProduct;
       } catch (error) {
         console.error("Erro ao criar produto:", error);
+        toast.error("Erro ao criar produto");
         await loadProducts();
         throw error;
       }

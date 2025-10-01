@@ -27,7 +27,9 @@ export function CouponForm({ onApply }: CouponFormProps) {
     <Card>
       <CardHeader>
         <CardTitle>Aplicar Cupom</CardTitle>
-        <CardDescription>Digite o código do cupom de desconto</CardDescription>
+        <CardDescription>
+          Digite o código do cupom de desconto (Ex: WELCOME10, SAVE100)
+        </CardDescription>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="flex gap-4">
